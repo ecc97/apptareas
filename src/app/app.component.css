@@ -1,0 +1,19 @@
+.app{
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 30px;
+    background: white;
+    box-shadow: 0px 10px 10px black;
+}
+button.btn{
+    margin: 10px;
+}
+a.btn{
+    margin: 3px;
+}
+a.close {
+    position: absolute;
+    right: 20px;
+    text-decoration: none;
+    font-size: 21px;
+}

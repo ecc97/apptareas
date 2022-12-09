@@ -1,0 +1,126 @@
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-center">
+        {{title}} <i class="fas fa-tasks"></i>
+      </h1>
+    </div>
+    <!--formulario para la tarea-->
+    <div class="row">
+      <div class="col-sm4">
+        <h2>Crear Tarea:</h2>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="name" class="control-label col-sm-2">
+              Nombre
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" placeholder="Ingresa nombre de la tarea"> 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="position" class="control-label col-sm-2">
+              Descripción
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="model.description" placeholder="Ingresa una breve descripción"> 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="control-label col-sm-2">
+              Correo electrónico
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email" placeholder="Ingresa el email en donde enviará la tarea"> 
+            </div>
+          </div>
+          <div class="form group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-primary" (click)="addE()">Guardar</button> 
+              <button type="reset" class="btn btn-danger">Cancelar</button> 
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--alerta de aviso-->
+    <div class="container">
+      <div class="alert alert-info alert-dismissable" *ngIf="msg">
+        <a href="#" class="close" (click)="closeAlert()">
+          &times;
+        </a>
+        {{msg}}
+      </div>
+    </div>
+    <!--la lista donde se guardan las tareas-->
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>Listas</h2>
+        <table class="table table bordered">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees; let i = index">  
+              <td>{{employee.name}}</td>
+              <td>{{employee.description}}</td>
+              <td>{{employee.email}}</td>
+              <td>
+                <a class="btn btn-primary" title="Editar" (click)="editE(i)">
+                  <i class="fas fa-edit"></i> Editar
+                </a>
+                <a class="btn btn-danger" title="Eliminar" (click)="deleteE(i)">
+                  <i class="fas fa-trash-alt"></i> Eliminar
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--formulario para actualizar tareas-->
+      <div class="col-sm-4" [hidden]="hideUpdate">
+        <h2>Actualizar Tarea:</h2>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="name" class="control-label col-sm-2">
+              Nombre
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model2.name" placeholder="Nombren de la tarea">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="position" class="control-label col-sm-2">
+              Descripción
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="model2.description" placeholder="Breve description">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="control-label col-sm-2">
+              Correo
+            </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model2.email" placeholder="Email destino">
+            </div>
+          </div>
+          <div class="form group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-primary" (click)="updateE()">Actualizar</button>
+              <button type="reset" class="btn btn-danger">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
